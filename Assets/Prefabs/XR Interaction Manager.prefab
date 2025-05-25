@@ -1,0 +1,164 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &712305010639438935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4277250735425310393}
+  - component: {fileID: 5899527630174692559}
+  - component: {fileID: 491847403952495358}
+  - component: {fileID: 1122967256962942372}
+  - component: {fileID: 2360318546060355962}
+  - component: {fileID: 7863619018635366704}
+  - component: {fileID: 2513274570301601464}
+  m_Layer: 0
+  m_Name: XR Interaction Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4277250735425310393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712305010639438935}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5899527630174692559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712305010639438935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+--- !u!114 &491847403952495358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712305010639438935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76465940778273499d028b9445a1ef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouthInteractable: {fileID: 0}
+  heartInteractable: {fileID: 0}
+  shoulderInteractables:
+  - {fileID: 0}
+  - {fileID: 0}
+  bodyInteractables:
+  - {fileID: 0}
+  - {fileID: 0}
+  headInteractables:
+  - {fileID: 0}
+  - {fileID: 0}
+  phoneSocket: {fileID: 0}
+  interactionState: 3
+  currentChestPressCounter: 0
+  maxChestPressCounter: 10
+  currentMouthListeningTime: 0
+  maxMouthListeningTime: 5
+  currentMouthBreathTime: 0
+  maxMouthBreathTime: 5
+  minHMDDistance: 0.2
+  currentBodyShakeTime: 0
+  maxBodyShakeTime: 5
+  currentCheckSurroundingsTime: 0
+  maxCheckSurroundingsTime: 15
+--- !u!114 &1122967256962942372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712305010639438935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ce8d0654d3562438b07f01fba47a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customInteractionManager: {fileID: 0}
+  body: {fileID: 0}
+  leftShoulderInteractable: {fileID: 0}
+  rightShoulderInteractable: {fileID: 0}
+  followSpeed: 10
+--- !u!114 &2360318546060355962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712305010639438935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791e1639d4d66764a81fa42f2c9aaf79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customInteractionManager: {fileID: 0}
+  topBodyInteractable: {fileID: 0}
+  bottomBodyInteractable: {fileID: 0}
+--- !u!114 &7863619018635366704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712305010639438935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9d82c99e3f3474fac1b4e64f8ac708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customInteractionManager: {fileID: 0}
+  headAnimator: {fileID: 0}
+  topHeadInteractable: {fileID: 0}
+  bottomHeadInteractable: {fileID: 0}
+--- !u!114 &2513274570301601464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712305010639438935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19955c1665f11b44825cc05edf54642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phoneObject: {fileID: 0}
+  pocketSocketInteractor: {fileID: 0}
+  phoneBodySocketAttachPoint: {fileID: 0}
+  phoneInteractionState: 1
+  phoneScreens:
+  - {fileID: 21300000, guid: 58be7b28fda016448ae61aec48093430, type: 3}
+  - {fileID: 21300000, guid: 3f55557faaf29094e94aef3677475605, type: 3}
+  - {fileID: 21300000, guid: 1e1f8c750e0c6e643868c703392aec32, type: 3}
+  phoneScreenImage: {fileID: 0}
+  isFirstTimeInPocket: 1
+  initialLayerMask:
+    m_Bits: 0
+  currentLayerMask:
+    m_Bits: 0
+  isAllowedToPutPhoneDown: 0
