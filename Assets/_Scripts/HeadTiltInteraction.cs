@@ -4,17 +4,17 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class HeadTiltInteraction : MonoBehaviour
 {
-    private GameManager gameManager; // Reference to the GameManager script
+    private GameManager gameManager;
     public CustomInteractionManager customInteractionManager;
-    //public Animator bodyAnimator; // The animator component to control the animation
+    //public Animator bodyAnimator;
 
-    public Animator headAnimator; // The animator component to control the head animation
+    public Animator headAnimator; 
 
-    private GameObject topHeadInteractableObject; // The object to be grabbed and dragged
-    private GameObject bottomHeadInteractableObject; // The object to be grabbed and dragged
+    private GameObject topHeadInteractableObject; 
+    private GameObject bottomHeadInteractableObject; 
 
-    public XRSimpleInteractable topHeadInteractable; // The object to be grabbed and dragged
-    public XRSimpleInteractable bottomHeadInteractable; // The object to be grabbed and dragged
+    public XRSimpleInteractable topHeadInteractable; 
+    public XRSimpleInteractable bottomHeadInteractable; 
 
     private bool isTopGrabbed = false;
     private bool isBottomGrabbed = false;
@@ -24,15 +24,15 @@ public class HeadTiltInteraction : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gameManager = FindFirstObjectByType<GameManager>(); // Find the GameManager in the scene
-        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>(); // Find the CustomInteractionManager in the scene
+        gameManager = FindFirstObjectByType<GameManager>();
+        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>();
 
-        topHeadInteractableObject = customInteractionManager.headInteractables[0]; // Get the top head interactable object
-        bottomHeadInteractableObject = customInteractionManager.headInteractables[1]; // Get the bottom head interactable object
+        topHeadInteractableObject = customInteractionManager.headInteractables[0];
+        bottomHeadInteractableObject = customInteractionManager.headInteractables[1];
 
         topHeadInteractable = topHeadInteractableObject.GetComponent<XRSimpleInteractable>();
         bottomHeadInteractable = bottomHeadInteractableObject.GetComponent<XRSimpleInteractable>();
-        //bodyAnimator = GetComponent<Animator>(); // Get the Animator component attached to this GameObject
+        //bodyAnimator = GetComponent<Animator>();
 
         if (topHeadInteractable != null)
         {
@@ -49,7 +49,7 @@ public class HeadTiltInteraction : MonoBehaviour
         }
 
         // Set the head to tilt at start
-        headAnimator.SetTrigger("TriggerHeadTiltAnim"); // Trigger the head tilt animation
+        headAnimator.SetTrigger("TriggerHeadTiltAnim");
     }
 
     // Update is called once per frame
@@ -108,7 +108,7 @@ public class HeadTiltInteraction : MonoBehaviour
         {
             //Debug.Log("Both body objects are grabbed!");
 
-            headAnimator.SetTrigger("TriggerHeadUprightAnim"); // Trigger the head tilt animation
+            headAnimator.SetTrigger("TriggerHeadUprightAnim");
 
             // Disable the interactables to prevent further interaction
             ForceInteractionRelease();

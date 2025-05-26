@@ -7,8 +7,8 @@ public class GrabBody : MonoBehaviour
     public CustomInteractionManager customInteractionManager;
     //public Animator bodyAnimator; // The animator component to control the animation
 
-    public XRSimpleInteractable topBodyInteractable; // The object to be grabbed and dragged
-    public XRSimpleInteractable bottomBodyInteractable; // The object to be grabbed and dragged
+    public XRSimpleInteractable topBodyInteractable;
+    public XRSimpleInteractable bottomBodyInteractable;
 
     public Animator bodyAnimator; // The animator component to control the animation
 
@@ -78,7 +78,7 @@ public class GrabBody : MonoBehaviour
             // Check if the interaction state is set to BodyDragging
             customInteractionManager.StartCoroutine(customInteractionManager.TrackBodyShakingTime());
 
-            // Trigger the animation or any other action you want to perform
+            // Trigger the animation
             bodyAnimator.SetTrigger("TriggerShakingAnim");
         }
         else

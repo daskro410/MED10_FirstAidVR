@@ -35,7 +35,7 @@ public class ClampButtonMovement : MonoBehaviour
 
     private void Start()
     {
-        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>(); // Find the CustomInteractionManager in the scene
+        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>();
 
         // Get the initial parent if it exists
         initialParent = transform.parent;
@@ -61,7 +61,7 @@ public class ClampButtonMovement : MonoBehaviour
 
     private void Update()
     {
-        // Keep track of whether the parent changes dynamically
+        // Keep track of whether the parent changes
         bool currentlyHasParent = transform.parent != null;
 
         if (customInteractionManager.interactionState == InteractionState.HeartPumping){
@@ -160,24 +160,24 @@ public class ClampButtonMovement : MonoBehaviour
 
         if (hasParent)
         {
-            // Keep the movement within range in local space if parented
+            // Keep the movement within range
             targetPosition = transform.localPosition;
             targetPosition.y = Mathf.Clamp(targetPosition.y, initialPosition.y + minYOffset, initialPosition.y + maxYOffset);
-            transform.localPosition = targetPosition;  // Use local position if parented
+            transform.localPosition = targetPosition;
         }
         else
         {
-            // Keep the movement within range in world space if not parented
+            // Keep the movement within range
             targetPosition = transform.position;
             targetPosition.y = Mathf.Clamp(targetPosition.y, initialPosition.y + minYOffset, initialPosition.y + maxYOffset);
-            transform.position = targetPosition;  // Use world position if not parented
+            transform.position = targetPosition;
         }
 
         // Ensure the rigidbody stays within the range
         if (rb != null)
         {
-            rb.linearVelocity = Vector3.zero; // Stop any unintended movement
-            rb.angularVelocity = Vector3.zero; // Stop any unintended rotation
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
     }
 
@@ -269,27 +269,27 @@ public class ClampButtonMovement : MonoBehaviour
     public void ToggleHighlight(){
         if (isHighlighted){
             GetComponent<Renderer>().enabled = false;
-            GetComponent<Collider>().enabled = false; // Disable the collider when highlighted
+            GetComponent<Collider>().enabled = false;
             isHighlighted = false;
         }
 
         else if (!isHighlighted){
             GetComponent<Renderer>().enabled = true;
-            GetComponent<Collider>().enabled = true; // Enable the collider when not highlighted
+            GetComponent<Collider>().enabled = true;
             isHighlighted = true;
         }
     }
 
     private void OnDrawGizmos()
     {
-        // Ensure initialPosition is properly initialized
+        // initialize initialPosition
         if (initialPosition == Vector3.zero)
         {
             hasParent = transform.parent != null;
             initialPosition = hasParent ? transform.localPosition : transform.position;
         }
 
-        // Draw gizmos relative to the correct initial position
+        // Draw gizmos
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(
             hasParent ? transform.parent.TransformPoint(initialPosition + new Vector3(0, minYOffset, 0)) 

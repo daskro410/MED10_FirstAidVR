@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
-    public FadeBehavior fadeBehavior; // Reference to the FadeBehavior script
+    public FadeBehavior fadeBehavior;
 
     void Start()
     {
@@ -14,15 +14,15 @@ public class SceneManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        StartCoroutine(LoadSceneCoroutine(sceneName)); // Start the coroutine to load the scene
+        StartCoroutine(LoadSceneCoroutine(sceneName));
     }
 
     private IEnumerator LoadSceneCoroutine(string sceneName)
     {
         fadeBehavior.FadeOut();
 
-        yield return new WaitForSeconds(fadeBehavior.defaultFadeDuration); // Wait for the fade duration before loading the scene
+        yield return new WaitForSeconds(fadeBehavior.defaultFadeDuration);
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName); // Load the new scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName); 
     }
 }

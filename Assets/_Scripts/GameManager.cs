@@ -53,19 +53,19 @@ public class GameManager : MonoBehaviour
 
         switch (state){
             case GameState.Introduction:
-                HandleIntroductionState(); // Call the method to handle the Introduction state
+                HandleIntroductionState();
                 break;
             case GameState.Interacting:
-                HandleInteractingState(); // Call the method to handle the Interacting state
+                HandleInteractingState();
                 break;
             case GameState.AmbulanceCalled:
-                HandleAmbulanceCalledState(); // Call the method to handle the AmbulanceCalled state
+                HandleAmbulanceCalledState();
                 break;
             case GameState.AmbulanceArrived:
-                HandleAmbulanceArrivedState(); // Call the method to handle the AmbulanceArrived state
+                HandleAmbulanceArrivedState();
                 break;
             case GameState.Finished:
-                HandleFinishedState(); // Call the method to handle the Finished state
+                HandleFinishedState();
                 break;
         }
         
@@ -80,14 +80,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void HandleAmbulanceCalledState(){
-        Debug.Log("Ambulance called!"); // Log that the ambulance has been called
-        StartCoroutine(ambulanceMover.CallAmbulance(ambulanceArrivalTime)); // Call the ambulance with the specified arrival time
-        Debug.Log("Game State: " + gameState); // Log the current game state
+        Debug.Log("Ambulance called!");
+        StartCoroutine(ambulanceMover.CallAmbulance(ambulanceArrivalTime));
+        Debug.Log("Game State: " + gameState);
     }
 
     public void HandleAmbulanceArrivedState(){
-        customInteractionManager.SetInteractionState(InteractionState.AmbulanceArrived); // Set the interaction state to AmbulanceArrived
-        StartCoroutine(FadeToFinish()); // Start the fade out effect
+        customInteractionManager.SetInteractionState(InteractionState.AmbulanceArrived);
+        StartCoroutine(FadeToFinish());
     }
 
     public void HandleFinishedState(){
@@ -95,9 +95,9 @@ public class GameManager : MonoBehaviour
     }
 
     private IEnumerator FadeToFinish(){
-        yield return new WaitForSeconds(fadeOutTime); // Wait for 2 seconds before fading to finish
-        FindFirstObjectByType<FadeBehavior>().FadeOut(); // Call the FadeToFinish method from the FadeBehavior script
+        yield return new WaitForSeconds(fadeOutTime);
+        FindFirstObjectByType<FadeBehavior>().FadeOut();
         
-        ambulanceMover.GetComponent<AudioSource>().Stop(); // Stop the ambulance sound
+        ambulanceMover.GetComponent<AudioSource>().Stop();
     }
 }

@@ -4,17 +4,17 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class GrabDragBehavior : MonoBehaviour
 {
-    GameManager gameManager; // Reference to the GameManager script
-    public CustomInteractionManager customInteractionManager; // Reference to the CustomInteractionManager script
+    GameManager gameManager;
+    public CustomInteractionManager customInteractionManager;
 
-    public GameObject body; // The body object to be dragged
-    private Animator bodyAnimator; // The animator component to control the animation
-    private Rigidbody bodyRigidbody; // The Rigidbody component of the body
-    private BoxCollider bodyCollider; // The BoxCollider component of the body
+    public GameObject body;
+    private Animator bodyAnimator;
+    private Rigidbody bodyRigidbody; 
+    private BoxCollider bodyCollider; 
     
 
-    public XRSimpleInteractable leftShoulderInteractable; // The object to be grabbed and dragged
-    public XRSimpleInteractable rightShoulderInteractable; // The object to be grabbed and dragged
+    public XRSimpleInteractable leftShoulderInteractable;
+    public XRSimpleInteractable rightShoulderInteractable;
 
     private bool isLeftShoulderGrabbed = false;
     private bool isRightShoulderGrabbed = false;
@@ -22,7 +22,7 @@ public class GrabDragBehavior : MonoBehaviour
     private Transform leftHand;
     private Transform rightHand;
 
-    public float followSpeed = 10f; // Speed at which the object follows the hand
+    public float followSpeed = 10f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,13 +30,13 @@ public class GrabDragBehavior : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManager>(); // Find the GameManager in the scene
         body = gameManager.bodyPrefab;
 
-        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>(); // Find the CustomInteractionManager in the scene
+        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>();
         leftShoulderInteractable = customInteractionManager.shoulderInteractables[0].GetComponent<XRSimpleInteractable>();
         rightShoulderInteractable = customInteractionManager.shoulderInteractables[1].GetComponent<XRSimpleInteractable>();
 
-        bodyAnimator = body.GetComponent<Animator>(); // Get the Animator component attached to this GameObject
-        bodyRigidbody = body.GetComponent<Rigidbody>(); // Get the Rigidbody component attached to this GameObject
-        bodyCollider = body.GetComponent<BoxCollider>(); // Get the BoxCollider component attached to this GameObject
+        bodyAnimator = body.GetComponent<Animator>(); 
+        bodyRigidbody = body.GetComponent<Rigidbody>(); 
+        bodyCollider = body.GetComponent<BoxCollider>();
 
         if (leftShoulderInteractable != null)
         {
@@ -96,7 +96,7 @@ public class GrabDragBehavior : MonoBehaviour
         {
             Debug.Log("Both shoulder objects are grabbed!");
 
-            // Trigger the animation or any other action you want to perform
+            // Trigger the animation
             bodyAnimator.SetTrigger("TriggerUprightAnim");
 
             bodyCollider.enabled = true;

@@ -14,5 +14,5 @@ public class Sound
     public bool loop;
 
     [HideInInspector]
-    public AudioSource source; // Reference to the AudioSource component
+    public AudioSource source;
 }

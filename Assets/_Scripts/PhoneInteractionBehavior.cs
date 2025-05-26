@@ -15,8 +15,8 @@ public enum PhoneInteractionState{
 
 public class PhoneInteractionBehavior : MonoBehaviour
 {
-    CustomInteractionManager customInteractionManager; // Reference to the CustomInteractionManager script
-    AudioManager audioManager; // Reference to the AudioManager script
+    CustomInteractionManager customInteractionManager; 
+    AudioManager audioManager; 
 
     public GameObject phoneObject;
     public XRSocketInteractor pocketSocketInteractor;
@@ -25,7 +25,7 @@ public class PhoneInteractionBehavior : MonoBehaviour
     public PhoneInteractionState phoneInteractionState;
 
     public Sprite[] phoneScreens;
-    public Image phoneScreenImage; // Reference to the UI Image component for the phone screen
+    public Image phoneScreenImage;
 
     public bool isFirstTimeInPocket = true;
 
@@ -41,9 +41,9 @@ public class PhoneInteractionBehavior : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>(); // Find the CustomInteractionManager in the scene
-        audioManager = FindFirstObjectByType<AudioManager>(); // Find the AudioManager in the scene
-        // Find the XRInteractionManager in the scene
+        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>();
+        audioManager = FindFirstObjectByType<AudioManager>();
+    
         interactionManager = FindFirstObjectByType<XRInteractionManager>();
 
         // Initialize the phone interaction state to Invisible
@@ -111,7 +111,7 @@ public class PhoneInteractionBehavior : MonoBehaviour
     public void HandleOnGroundState(){
         phoneObject.SetActive(true);
 
-        // Wait a bit before disabling the interaction, for some reason it doesn't work if we do it immediately
+        // Wait a bit before disabling the interaction, for some reason it doesn't work if its done immediately......
         currentLayerMask = InteractionLayerMask.GetMask("UNINTERACTABLE");
         phoneObject.GetComponent<XRGrabInteractable>().interactionLayers = currentLayerMask;
         customInteractionManager.phoneSocket.GetComponent<XRSocketInteractor>().interactionLayers = currentLayerMask;
@@ -173,7 +173,7 @@ public class PhoneInteractionBehavior : MonoBehaviour
 
     public IEnumerator SnapPhoneToPocket()
     {
-        yield return new WaitForEndOfFrame(); // Or WaitForSeconds(0.1f) if needed
+        yield return new WaitForEndOfFrame();
 
         var interactable = phoneObject.GetComponent<XRGrabInteractable>();
         if (interactable == null || pocketSocketInteractor == null || interactionManager == null)

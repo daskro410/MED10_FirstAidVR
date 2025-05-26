@@ -60,7 +60,7 @@ public class CustomInteractionManager : MonoBehaviour
     public float maxCheckSurroundingsTime = 5f;
 
     public InteractionState previousState;
-    private bool isAmbulanceArrivalAllowed = false; // Flag to check if the ambulance is allowed to arrive
+    private bool isAmbulanceArrivalAllowed = false;
 
     private GameObject[] allInteractables;
 
@@ -295,7 +295,6 @@ public class CustomInteractionManager : MonoBehaviour
         }
     }
 
-    // Make a coroutine to track how long the jaw has been interacted with. If it has been at least two seconds, move to the heart state
     public IEnumerator TrackMouthBreathTime(float maxTime)
     {
         GrabMouth grabMouth = GetComponent<GrabMouth>();
@@ -303,12 +302,12 @@ public class CustomInteractionManager : MonoBehaviour
         if (!(interactionState == InteractionState.CheckBreath) && !(interactionState == InteractionState.MouthBreathing))
         {
             Debug.Log("Mouth breath time tracking is not allowed in the current state.");
-            yield break; // Exit the coroutine if the state is not allowed
+            yield break;
         }
 
         Debug.Log("Tracking mouth breath time...");
-        currentMouthListeningTime = 0f; // Reset the listening time when starting to track
-        currentMouthBreathTime = 0f; // Reset the timer when starting to track
+        currentMouthListeningTime = 0f;
+        currentMouthBreathTime = 0f;
 
         while (currentMouthBreathTime < maxTime)
         {
@@ -340,7 +339,7 @@ public class CustomInteractionManager : MonoBehaviour
             // Ensures the interaction states have been done at least once before the ambulance arrives
             if (!isAmbulanceArrivalAllowed)
             {
-                isAmbulanceArrivalAllowed = true; // Set the flag to true to allow the ambulance to arrive
+                isAmbulanceArrivalAllowed = true;
                 gameManager.SetGameState(GameState.AmbulanceCalled); // Call the ambulance if allowed
             }
         }
@@ -364,11 +363,11 @@ public class CustomInteractionManager : MonoBehaviour
         if (!(interactionState == InteractionState.CheckConciousness))
         {
             Debug.Log("Body shake time tracking is not allowed in the current state.");
-            yield break; // Exit the coroutine if the state is not allowed
+            yield break;
         }
 
         Debug.Log("Tracking body shake time...");
-        currentBodyShakeTime = 0f; // Reset the timer when starting to track
+        currentBodyShakeTime = 0f;
 
         while (currentBodyShakeTime < maxBodyShakeTime)
         {
@@ -392,11 +391,11 @@ public class CustomInteractionManager : MonoBehaviour
         if (!(interactionState == InteractionState.CheckSurroundings))
         {
             Debug.Log("Checking surroundings time tracking is not allowed in the current state.");
-            yield break; // Exit the coroutine if the state is not allowed
+            yield break;
         }
 
         Debug.Log("Tracking checking surroundings time...");
-        currentCheckSurroundingsTime = 0f; // Reset the timer when starting to track
+        currentCheckSurroundingsTime = 0f;
 
         while (currentCheckSurroundingsTime < maxCheckSurroundingsTime)
         {

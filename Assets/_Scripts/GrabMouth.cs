@@ -6,18 +6,18 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class GrabMouth : MonoBehaviour
 {
     CustomInteractionManager customInteractionManager;
-    JawHandler jawHandler; // Reference to the JawHandler script
+    JawHandler jawHandler;
 
-    private GameObject foreHeadInteractableObject; // The object to be grabbed and dragged
-    private GameObject noseInteractableObject; // The object to be grabbed and dragged
-    private GameObject jawInteractableObject; // The object to be grabbed and dragged
+    private GameObject foreHeadInteractableObject;
+    private GameObject noseInteractableObject;
+    private GameObject jawInteractableObject;
 
-    public XRSimpleInteractable foreheadInteractable; // The object to be grabbed and dragged
-    public XRSimpleInteractable noseInteractable; // The object to be grabbed and dragged
-    public XRSimpleInteractable jawInteractable; // The object to be grabbed and dragged
+    public XRSimpleInteractable foreheadInteractable;
+    public XRSimpleInteractable noseInteractable;
+    public XRSimpleInteractable jawInteractable;
 
-    public XRSimpleInteractable topInteractable; // The object to be grabbed and dragged
-    public XRSimpleInteractable bottomInteractable; // The object to be grabbed and dragged
+    public XRSimpleInteractable topInteractable;
+    public XRSimpleInteractable bottomInteractable;
     
     public bool isTopGrabbed = false;
     public bool isBottomGrabbed = false;
@@ -26,12 +26,12 @@ public class GrabMouth : MonoBehaviour
 
     void Start()
     {
-        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>(); // Find the CustomInteractionManager in the scene
-        jawHandler = FindFirstObjectByType<JawHandler>(); // Find the JawHandler in the scene
+        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>();
+        jawHandler = FindFirstObjectByType<JawHandler>();
 
-        foreHeadInteractableObject = customInteractionManager.headInteractables[0]; // Get the top head interactable object
-        noseInteractableObject = customInteractionManager.mouthInteractables[0]; // Get the top head interactable object
-        jawInteractableObject = customInteractionManager.mouthInteractables[1]; // Get the top head interactable object
+        foreHeadInteractableObject = customInteractionManager.headInteractables[0];
+        noseInteractableObject = customInteractionManager.mouthInteractables[0];
+        jawInteractableObject = customInteractionManager.mouthInteractables[1];
 
         foreheadInteractable = foreHeadInteractableObject.GetComponent<XRSimpleInteractable>();
         noseInteractable = noseInteractableObject.GetComponent<XRSimpleInteractable>();
@@ -138,7 +138,7 @@ public class GrabMouth : MonoBehaviour
                 customInteractionManager.StartMouthBreathCoroutine(customInteractionManager.maxMouthBreathTime);
             }
 
-            // Trigger the animation or any other action you want to perform
+            // Trigger the animation
             jawHandler.OpenJaw(); // Open the jaw when both interactables are grabbed
         }
 
@@ -149,7 +149,7 @@ public class GrabMouth : MonoBehaviour
             // Stop the coroutine if one of the interactables is released
             customInteractionManager.StopMouthBreathCoroutine();
 
-            jawHandler.CloseJaw(); // Close the jaw when one of the interactables is released
+            jawHandler.CloseJaw();
         }
     }
 

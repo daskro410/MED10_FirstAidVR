@@ -22,9 +22,9 @@ public class GrabHandPose : MonoBehaviour
     public HandData leftHandPose; // Reference to the HandData scriptable object
     public HandData rightHandPose; // Reference to the HandData scriptable object
 
-    public bool animatePosition = true; // Flag to enable/disable position animation
-    public bool animateRotation = true; // Flag to enable/disable rotation animation
-    public bool animateFingerRotations = true; // Flag to enable/disable finger rotation animation
+    public bool animatePosition = true;
+    public bool animateRotation = true;
+    public bool animateFingerRotations = true;
 
     private Vector3 startingHandPosition;
     private Vector3 finalHandPosition;
@@ -39,7 +39,7 @@ public class GrabHandPose : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>(); // Find the CustomInteractionManager in the scene
+        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>();
 
         leftHandModelHandData = customInteractionManager.leftHandModel.GetComponent<HandData>();
         rightHandModelHandData = customInteractionManager.rightHandModel.GetComponent<HandData>();
@@ -299,10 +299,9 @@ public class GrabHandPose : MonoBehaviour
             return;
         }
 
-        // Ensure the animator is re-enabled when interactable is disabled
+        // Ensure the animator is reenabled when interactable is disabled
         handData.animator.enabled = true;
 
-        // Now manually call the logic to unset the pose, just like in UnsetPose()
         StartCoroutine(SetHandDataRoutine(handData, startingHandPosition, startingHandRotation, startingFingerRotations, finalHandPosition, finalHandRotation, finalFingerRotations));
     }
 }

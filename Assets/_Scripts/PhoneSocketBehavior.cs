@@ -4,7 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class PhoneSocketBehavior : MonoBehaviour
 {
     GameManager gameManager;
-    public CustomInteractionManager customInteractionManager; // Reference to the CustomInteractionManager script
+    public CustomInteractionManager customInteractionManager;
 
     public PhoneInteractionBehavior phoneInteractionBehavior;
 
@@ -12,8 +12,8 @@ public class PhoneSocketBehavior : MonoBehaviour
     void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
-        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>(); // Find the CustomInteractionManager in the scene
-        phoneInteractionBehavior = FindFirstObjectByType<PhoneInteractionBehavior>(); // Find the PhoneInteractionBehavior in the scene
+        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>();
+        phoneInteractionBehavior = FindFirstObjectByType<PhoneInteractionBehavior>();
 
         gameObject.SetActive(false); // Disable the phone socket at the start
     }

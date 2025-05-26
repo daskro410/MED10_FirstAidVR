@@ -52,8 +52,8 @@ public class UIManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>(); // Find the CustomInteractionManager in the scene
-        audioManager = FindFirstObjectByType<AudioManager>(); // Find the AudioManager in the scene
+        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>();
+        audioManager = FindFirstObjectByType<AudioManager>();
 
         UpdateUI(customInteractionManager.interactionState);
 

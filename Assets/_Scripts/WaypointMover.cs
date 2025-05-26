@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class WaypointMover : MonoBehaviour
 {
-    GameManager gameManager; // Reference to the GameManager script
+    GameManager gameManager; 
 
-    [SerializeField] private Route route; // Reference to the Route script
-    [SerializeField] private float speed = 5f; // Speed of the object
-    [SerializeField] private float rotationSpeed = 5f; // Speed of rotation towards the waypoint
+    [SerializeField] private Route route;
+    [SerializeField] private float speed = 5f; 
+    [SerializeField] private float rotationSpeed = 5f;
 
     public bool canMove = false;
 
-    private Transform currentWaypoint; // Index of the current waypoint
-    private Transform targetWaypoint; // Current target waypoint
+    private Transform currentWaypoint;
+    private Transform targetWaypoint;
 
     public float distanceThreshold = 0.1f; // Distance threshold to consider the waypoint reached
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gameManager = FindFirstObjectByType<GameManager>(); // Find the GameManager in the scene
+        gameManager = FindFirstObjectByType<GameManager>();
 
         if (route == null || route.points.Length == 0)
         {
@@ -45,13 +45,13 @@ public class WaypointMover : MonoBehaviour
 
     public IEnumerator CallAmbulance(int arrivalTime)
     {
-        yield return new WaitForSeconds(arrivalTime); // Wait for the specified arrival time
+        yield return new WaitForSeconds(arrivalTime);
 
-        GetComponent<AudioSource>().Play(); // Play the car sound
+        GetComponent<AudioSource>().Play();
 
-        canMove = true; // Allow the ambulance to move after the wait
+        canMove = true;
 
-        currentWaypoint = route.GetNextWaypoint(currentWaypoint); // Get the next waypoint after the wait
+        currentWaypoint = route.GetNextWaypoint(currentWaypoint);
         
         if (currentWaypoint == null)
         {
@@ -66,7 +66,7 @@ public class WaypointMover : MonoBehaviour
 
         if (Vector3.Distance(transform.position, currentWaypoint.position) < distanceThreshold)
         {
-            currentWaypoint = route.GetNextWaypoint(currentWaypoint); // Get the next waypoint
+            currentWaypoint = route.GetNextWaypoint(currentWaypoint);
 
             if (currentWaypoint == null)
             {

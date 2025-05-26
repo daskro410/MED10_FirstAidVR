@@ -25,7 +25,7 @@ public class PlayerMovementLocker : MonoBehaviour
 
     void Start()
     {
-        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>(); // Find the CustomInteractionManager in the scene
+        customInteractionManager = FindFirstObjectByType<CustomInteractionManager>();
 
         xrOrigin = XRRig.GetComponent<XROrigin>();
         moveProvider = XRRig.GetComponentInChildren<ContinuousMoveProvider>();
@@ -39,7 +39,7 @@ public class PlayerMovementLocker : MonoBehaviour
         if (moveProvider) moveProvider.enabled = false;
         Debug.Log("Movement Locked");
 
-        GetComponent<Collider>().enabled = false; // Disable the collider to prevent further triggers
+        GetComponent<Collider>().enabled = false;
     }
 
     public void UnlockMovement()
@@ -47,9 +47,10 @@ public class PlayerMovementLocker : MonoBehaviour
         if (moveProvider) moveProvider.enabled = true;
         Debug.Log("Movement Unlocked");
 
-        GetComponent<Collider>().enabled = true; // Re-enable the collider for future triggers
+        GetComponent<Collider>().enabled = true;
     }
 
+    // Don't need this anymore as it does not work hahaha
     public void SnapPlayerToSittingSpot()
     {
         FadeBehavior fadeBehavior = XRRig.GetComponentInChildren<FadeBehavior>();
@@ -110,6 +111,7 @@ public class PlayerMovementLocker : MonoBehaviour
         fadeBehavior.FadeOut(fadeDuration);
     }
 
+    // THIS WORKS THX GADE :D
     public void MoveToSeat(GameObject target)
     {
         FadeBehavior fadeBehavior = XRRig.GetComponentInChildren<FadeBehavior>();
